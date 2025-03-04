@@ -6,7 +6,6 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
 }
 
 export default function Button({ className, variant, ...props }: ButtonProps) {
-  console.log(buttonVariants({ variant }))
   return (
     <button
       {...props}
