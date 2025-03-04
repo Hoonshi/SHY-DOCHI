@@ -48,7 +48,7 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
 
         <form
           onSubmit={handleSubmit(handleLetterSubmit)}
-          className="flex flex-col gap-6 mt-10">
+          className="flex flex-col gap-6 mt-10 mx-2">
           <input
             {...register('nickname')}
             className="w-full p-2 border border-black/50 rounded-lg focus:bg-blue-100 focus:outline-none"
@@ -57,7 +57,7 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
 
           <textarea
             {...register('content')}
-            className="w-full h-40 p-3 border border-black/50 rounded-lg focus:bg-blue-100 focus:outline-none"
+            className="w-full h-50 p-3 border border-black/50 rounded-lg focus:bg-blue-100 focus:outline-none"
             placeholder="여기에 써주시면 돼요! 만약 이전에 많은 내용이 보내졌다면, 전달이 안될 수 있어요... "
           />
 
