@@ -1,4 +1,5 @@
 import Button from '@/components/Button'
+import axios from 'axios'
 import { createPortal } from 'react-dom'
 import { useForm } from 'react-hook-form'
 import { IoMdArrowRoundBack } from 'react-icons/io'
@@ -7,11 +8,26 @@ type LetterPageProps = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function LetterPage({ setIsOpen }: LetterPageProps) {
-  const { register, handleSubmit } = useForm()
+type FormValues = { nickname: string; content: string }
 
-  function handleLetterSubmit() {
-    console.log('전송완료')
+export default function LetterPage({ setIsOpen }: LetterPageProps) {
+  const { register, handleSubmit, reset } = useForm<FormValues>()
+
+  async function handleLetterSubmit(data: FormValues) {
+    try {
+      const response = await axios.post('https://formspree.io/f/mnnjeybd', data)
+
+      if (response.status === 200) {
+        alert('편지가 전송되었습니다!')
+        reset()
+        setIsOpen(false)
+      } else {
+        alert('전송 실패! 다시 시도해주세요.')
+      }
+    } catch (error) {
+      console.error('전송 중 오류 발생:', error)
+      alert('전송 중 오류가 발생했습니다.')
+    }
   }
 
   return createPortal(
@@ -42,7 +58,7 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
           <textarea
             {...register('content')}
             className="w-full h-40 p-3 border border-black/50 rounded-lg focus:bg-blue-100 focus:outline-none"
-            placeholder="여기에 써주시면 돼요!"
+            placeholder="여기에 써주시면 돼요! 만약 이전에 많은 내용이 보내졌다면, 전달이 안될 수 있어요... "
           />
 
           <Button variant="send">전달하기</Button>
