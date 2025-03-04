@@ -1,6 +1,5 @@
 import Button from '@/components/Button'
 import axios from 'axios'
-import { createPortal } from 'react-dom'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { IoMdArrowRoundBack } from 'react-icons/io'
@@ -29,7 +28,7 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
     }
   }
 
-  return createPortal(
+  return (
     <div className="fixed inset-0 w-full max-w-[600px] h-screen bg-[url('/img/도치편지지.jpg')] bg-center bg-no-repeat bg-cover mx-auto ">
       <div className="absolute inset-0 bg-white opacity-20 pointer-events-none"></div>
 
@@ -63,7 +62,6 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
           <Button variant="send">전달하기</Button>
         </form>
       </div>
-    </div>,
-    document.body
+    </div>
   )
 }
