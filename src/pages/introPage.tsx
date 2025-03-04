@@ -7,7 +7,7 @@ export default function IntroPage() {
 
   return (
     <>
-      <div className=" p-3 relative max-w-xs mx-auto top-8 bg-[#EAEAEA] text-black rounded-full text-xs text-center leading-4">
+      <div className=" p-3 relative max-w-xs mx-auto top-4 bg-[#EAEAEA] text-black rounded-full text-xs text-center leading-4">
         안녕하세요~ 반가워요 🦔
         <br></br>익명으로 할 말이 있으시면, 제가 전해드릴게요~
         <br></br>답장은,,, 챙겨올 수 없지만,,, 보내드릴순 있어요!

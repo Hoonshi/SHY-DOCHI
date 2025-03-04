@@ -20,7 +20,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         move: 'bg-transparent pl-0.5 py-0 mt-1 ml-1 text-black"',
-        send: 'bg-[#3b5bdb] text-white w-[20%] mx-auto'
+        send: 'bg-[#3b5bdb] text-white w-[25%] mx-auto'
       }
     },
     defaultVariants: {
