@@ -1,7 +1,6 @@
 import 'tailwindcss'
 import Router from './routes/router'
 import { Toaster } from 'react-hot-toast'
-import { Helmet } from 'react-helmet-async'
 
 export default function App() {
   return (
@@ -23,12 +22,6 @@ export default function App() {
           }
         }}
       />
-      <Helmet>
-        <meta
-          property="og:image"
-          content="/img/도치.jpg"
-        />
-      </Helmet>
     </>
   )
 }
