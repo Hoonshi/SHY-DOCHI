@@ -2,7 +2,7 @@ import { cn } from '@/util/cn'
 import { cva } from 'class-variance-authority'
 
 type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'secondary'
+  variant?: 'send' | 'move'
 }
 
 export default function Button({ className, variant, ...props }: ButtonProps) {
@@ -19,12 +19,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-gradient-to-r from-primary-500 to-primary-700 text-black',
-        secondary: 'bg-purple-700 text-white'
+        move: 'bg-transparent pl-0.5 py-0 mt-1 ml-1 text-black"',
+        send: 'bg-[#3b5bdb] text-white w-[20%] mx-auto'
       }
     },
     defaultVariants: {
-      variant: 'primary'
+      variant: 'move'
     }
   }
 )
