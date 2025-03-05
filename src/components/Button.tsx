@@ -3,6 +3,7 @@ import { cva } from 'class-variance-authority'
 
 type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   variant?: 'send' | 'move'
+  disabled?: boolean
 }
 
 export default function Button({ className, variant, ...props }: ButtonProps) {

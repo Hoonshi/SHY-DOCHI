@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import axios from 'axios'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { IoMdArrowRoundBack } from 'react-icons/io'
@@ -11,20 +12,24 @@ type LetterPageProps = {
 type FormValues = { nickname: string; content: string }
 
 export default function LetterPage({ setIsOpen }: LetterPageProps) {
-  const { register, handleSubmit, reset } = useForm<FormValues>()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { register, handleSubmit } = useForm<FormValues>()
 
   async function handleLetterSubmit(data: FormValues) {
+    if (isSubmitting) return
+    setIsSubmitting(true)
     try {
       const response = await axios.post('https://formspree.io/f/mnnjeybd', data)
 
       if (response.status === 200) {
-        toast.success('전달 됐어요!', { icon: '🥰' })
-        reset()
         setIsOpen(false)
+        toast.success('전달 됐어요!', { icon: '🥰' })
       }
     } catch (error) {
       console.error('전송 중 오류 발생:', error)
       toast.error('전달에 실패했어요...', { icon: '😭' })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -59,7 +64,11 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
             placeholder="여기에 써주시면 돼요! 만약 이전에 많은 내용이 보내졌다면, 전달이 안될 수 있어요... "
           />
 
-          <Button variant="send">전달하기</Button>
+          <Button
+            variant="send"
+            disabled={isSubmitting}>
+            전달하기
+          </Button>
         </form>
       </div>
     </div>
