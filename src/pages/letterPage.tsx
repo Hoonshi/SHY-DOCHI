@@ -12,12 +12,12 @@ type LetterPageProps = {
 type FormValues = { nickname: string; content: string }
 
 export default function LetterPage({ setIsOpen }: LetterPageProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmit, setIsSubmit] = useState(false)
   const { register, handleSubmit } = useForm<FormValues>()
 
   async function handleLetterSubmit(data: FormValues) {
-    if (isSubmitting) return
-    setIsSubmitting(true)
+    setIsSubmit(true)
+
     try {
       const response = await axios.post('https://formspree.io/f/mnnjeybd', data)
 
@@ -29,7 +29,7 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
       console.error('전송 중 오류 발생:', error)
       toast.error('전달에 실패했어요...', { icon: '😭' })
     } finally {
-      setIsSubmitting(false)
+      setIsSubmit(false)
     }
   }
 
@@ -66,7 +66,7 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
 
           <Button
             variant="send"
-            disabled={isSubmitting}>
+            disabled={isSubmit}>
             전달하기
           </Button>
         </form>
