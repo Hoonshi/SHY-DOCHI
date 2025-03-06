@@ -27,10 +27,6 @@ export default function LetterPage({ setIsOpen }: LetterPageProps) {
   })
 
   useEffect(() => {
-    console.log(sentMessage)
-  }, [sentMessage])
-
-  useEffect(() => {
     localStorage.setItem('sentMessages', JSON.stringify(sentMessage))
   }, [sentMessage])
 

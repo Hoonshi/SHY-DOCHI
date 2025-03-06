@@ -29,12 +29,14 @@ export default function SentMessage({
         {sentMessage ? (
           <div className="flex flex-col gap-5 mt-4 border border-gray-700 p-4 rounded-lg">
             <p className="font-semibold text-gray-700">
-              '{sentMessage[0].nickname}' 님이 가장 최근에 보내신 편지!
+              '{sentMessage[0].nickname}' 님께서 가장 최근에 보내신 편지에요
             </p>
             <p className="text-gray-700">{sentMessage[0].content}</p>
           </div>
         ) : (
-          <p className="text-center text-gray-500 mt-4">보낸 편지가 없어요.</p>
+          <p className="text-center text-gray-500 mt-4">
+            보내셨던 편지가 없으세요~
+          </p>
         )}
       </div>
     </div>
