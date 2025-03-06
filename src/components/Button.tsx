@@ -1,7 +1,7 @@
 import { cn } from '@/util/cn'
 import { cva } from 'class-variance-authority'
 
-type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'send' | 'move'
   disabled?: boolean
 }

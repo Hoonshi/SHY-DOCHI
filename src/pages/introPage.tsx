@@ -1,9 +1,16 @@
 import Button from '@/components/Button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import LetterPage from './letterPage'
+import toast from 'react-hot-toast'
 
 export default function IntroPage() {
   const [isOpen, setisOpen] = useState<boolean>(false)
+
+  useEffect(() => {
+    toast.success('곧 페이지 업데이트 예정이에요! 간간히 들려주세요!', {
+      icon: '💫'
+    })
+  }, [])
 
   return (
     <>
