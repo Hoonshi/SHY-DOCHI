@@ -18,14 +18,22 @@ export default function SentMessage({
   const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (ref.current && ref.current.contains(e.target as Node))
+    function handleClick(e: MouseEvent | TouchEvent) {
+      if (
+        ref.current &&
+        e.target instanceof Node &&
+        !ref.current.contains(e.target)
+      )
         setIsSentModalOpen(false)
     }
 
     document.addEventListener('click', handleClick, true)
+    document.addEventListener('touchstart', handleClick, true)
 
-    return () => document.removeEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick, true)
+      document.removeEventListener('touchstart', handleClick, true)
+    }
   }, [setIsSentModalOpen])
 
   return (
