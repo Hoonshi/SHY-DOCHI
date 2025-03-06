@@ -7,12 +7,12 @@ export default function App() {
     <>
       <Router />
       <Toaster
-        position="top-center"
+        position="bottom-center"
         gutter={12}
         containerStyle={{ margin: '8px' }}
         toastOptions={{
-          success: { duration: 3000 },
-          error: { duration: 5000 },
+          success: { duration: 2000 },
+          error: { duration: 2000 },
           style: {
             fontSize: '16px',
             maxWidth: '500px',

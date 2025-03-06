@@ -19,7 +19,7 @@ export default function SentMessage({
       <div className="w-full max-w-lg bg-white p-5 rounded-lg">
         <div className="flex justify-between items-center">
           <h2 className="text-l text-blue-500 font-bold">
-            미안해요~ 지금은 가장 최근 것만 보실 수 있어요 🦔
+            미안해요~ 지금은 가장 최근 것만 보실 수 있어요
           </h2>
           <button onClick={() => setIsSentModalOpen(false)}>
             <IoMdClose size={24} />
@@ -29,7 +29,7 @@ export default function SentMessage({
         {sentMessage ? (
           <div className="flex flex-col gap-5 mt-4 border border-gray-700 p-4 rounded-lg">
             <p className="font-semibold text-gray-700">
-              '{sentMessage[0].nickname}' 님께서 가장 최근에 보내신 편지에요
+              '{sentMessage[0].nickname}' 님께서 가장 최근에 보내신 편지에요 🦔
             </p>
             <p className="text-gray-700">{sentMessage[0].content}</p>
           </div>
