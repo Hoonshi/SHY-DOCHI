@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { IoMdClose } from 'react-icons/io'
 
 type FormValues = {
@@ -14,9 +15,24 @@ export default function SentMessage({
   sentMessage,
   setIsSentModalOpen
 }: SentMessageProps) {
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && ref.current.contains(e.target as Node))
+        setIsSentModalOpen(false)
+    }
+
+    document.addEventListener('click', handleClick, true)
+
+    return () => document.removeEventListener('click', handleClick)
+  }, [setIsSentModalOpen])
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-      <div className="w-full max-w-lg bg-white p-5 rounded-lg">
+      <div
+        ref={ref}
+        className="w-full max-w-lg bg-white p-5 rounded-lg">
         <div className="flex justify-between items-center">
           <h2 className="text-l text-blue-500 font-bold">
             미안해요~ 지금은 가장 최근 것만 보실 수 있어요
